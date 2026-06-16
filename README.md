@@ -54,7 +54,7 @@ titanic-data-analysis/
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/YOUR_USERNAME/titanic-data-analysis.git
+git clone https://github.com/GiorgiArsenadze/titanic-data-analysis.git
 cd titanic-data-analysis
 ```
 

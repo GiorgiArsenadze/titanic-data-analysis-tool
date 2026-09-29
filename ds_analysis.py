@@ -788,7 +788,10 @@ html = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
-output_path = '/mnt/user-data/outputs/titanic_ds_dashboard.html'
+output_path = os.environ.get(
+    'OUTPUT_PATH',
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), 'titanic_ds_dashboard.html'))
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
 with open(output_path, 'w') as f:
     f.write(html)
 

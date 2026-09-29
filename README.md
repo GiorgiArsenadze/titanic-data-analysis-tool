@@ -45,6 +45,8 @@ This project demonstrates the five core skills required in any data science role
 titanic-data-analysis/
 ├── ds_analysis.py                  # Full Python pipeline (run this)
 ├── titanic_ds_dashboard.html       # Self-contained HTML dashboard (open in browser)
+├── requirements.txt                # Python dependencies
+├── Dockerfile                      # Container image for reproducible runs
 └── README.md                       # This file
 ```
 
@@ -60,7 +62,7 @@ cd titanic-data-analysis
 
 **2. Install dependencies**
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
+pip install -r requirements.txt
 ```
 
 **3. Run the analysis**
@@ -80,7 +82,16 @@ start titanic_ds_dashboard.html
 xdg-open titanic_ds_dashboard.html
 ```
 
-The script will regenerate the full HTML dashboard with all charts embedded. No API keys, databases, or internet connection required — everything runs locally.
+The script will regenerate the full HTML dashboard with all charts embedded. No API keys or databases required — everything runs locally (the dataset is downloaded once by seaborn on first run).
+
+### 🐳 Run with Docker
+
+```bash
+docker build -t titanic-analysis .
+docker run --rm -v "$(pwd)/output:/app/output" titanic-analysis
+```
+
+The dashboard is written to `output/titanic_ds_dashboard.html` on your machine. The dataset is cached in the image at build time, so the container runs without internet access.
 
 ---
 
